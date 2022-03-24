@@ -54,26 +54,26 @@ function About() {
               may be you own a business or you&apos;ve started a donation
               campaign for some cause, we are here to help you! Wanna know how?
               See the mentioned use cases:
-              <ul className="list-disc">
-                <li className="text-gray-500 text-[14px] leading-6 mt-3 mx-8 lg:mx-12">
-                  If you have a business, you can create adverstisements with
-                  Dyno and embed them across your business domains.
-                </li>
-                <li className="text-gray-500 text-[14px] leading-6 mt-3 mx-8 lg:mx-12">
-                  If you have started a petetion or a donation for a social
-                  cause, you can share it among a large community of developers,
-                  and appeal them to emabed your Dyno to their project with just
-                  an url!{" "}
-                  <a
-                    className="text-green-500 font-medium border-b border-green-500"
-                    href=""
-                  >
-                    Doesn't that sound super cool?
-                  </a>
-                </li>
-              </ul>
             </p>
-            <button className="bg-green-500 hover:bg-green-600 text-white h-fit py-3 px-4 rounded-full text-sm mx-8 mt-6">
+            <ul className="list-disc">
+              <li className="text-gray-500 text-[14px] leading-6 mt-3 mx-8 lg:mx-12">
+                If you have a business, you can create adverstisements with Dyno
+                and embed them across your business domains.
+              </li>
+              <li className="text-gray-500 text-[14px] leading-6 mt-3 mx-8 lg:mx-12">
+                If you have started a petetion or a donation for a social cause,
+                you can share it among a large community of developers, and
+                appeal them to emabed your Dyno to their project with just an
+                url!{" "}
+                <a
+                  className="text-green-500 font-medium border-b border-green-500"
+                  href=""
+                >
+                  Doesn't that sound super cool?
+                </a>
+              </li>
+            </ul>
+            <button className="bg-green-500 hover:bg-green-600 text-white h-fit py-3 px-4 rounded-full text-sm mt-6">
               Create new
             </button>
           </div>

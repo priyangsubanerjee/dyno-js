@@ -1,4 +1,5 @@
 import React from "react";
+import * as AiIcons from "react-icons/ai";
 
 function Topnav() {
   return (
@@ -11,8 +12,9 @@ function Topnav() {
             <p className="text-gray-500 text-xs">Plugins made easy.</p>
           </div>
         </div>
-        <div className="text-xs rounded-full border border-green-500 bg-green-50 py-1 px-2 text-green-500 ml-6">
-          What&apos;s new in v6.0.0?
+        <div className="text-xs cursor-pointer rounded-full border flex items-start border-green-500 bg-green-50 py-2 px-3 text-green-500 ml-6">
+          What&apos;s new in v6.0.0?{" "}
+          <AiIcons.AiOutlineRight className="ml-1 mt-[2px]" />
         </div>
         <ul className="flex items-center ml-auto">
           <li className="text-sm text-gray-500 ml-6">
