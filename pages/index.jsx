@@ -1,7 +1,9 @@
 import Head from "next/head";
 import Image from "next/image";
 import Topnav from "../components/Topnav";
+import UnderDevelopment from "../components/UnderDevelopment";
 import About from "../fragments/About";
+import SupportUkraine from "../fragments/SupportUkraine";
 
 export default function Home() {
   return (
@@ -11,6 +13,8 @@ export default function Home() {
       </Head>
       <Topnav />
       <About />
+      <SupportUkraine />
+      <UnderDevelopment />
     </div>
   );
 }
