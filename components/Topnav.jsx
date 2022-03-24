@@ -6,15 +6,9 @@ function Topnav() {
     <div>
       <div className="flex items-center border-b py-2 px-4 lg:px-6">
         <div className="flex items-center">
-          <img
-            src="./icons/logo.png"
-            alt="logo"
-            className="h-6 lg:h-8 w-6 lg:w-8"
-          />
+          <img src="./icons/logo.png" alt="logo" className="h-8 w-8" />
           <div className="ml-2">
-            <h1 className="text-black text-base lg:text-xl font-bold">
-              Dyno Js
-            </h1>
+            <h1 className="text-black text-xl font-bold">Dyno Js</h1>
             <p className="text-gray-500 text-xs">Plugins made easy.</p>
           </div>
         </div>
