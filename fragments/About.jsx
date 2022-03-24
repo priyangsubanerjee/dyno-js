@@ -5,8 +5,14 @@ function About() {
     <div>
       <div className="bg-gray-50 rounded-md m-2 lg:m-6 p-4 lg:p-6">
         <div className="flex items-center border-b pb-4">
-          <img src="./icons/option.png" className="h-6 w-6" alt="" />
-          <h1 className="text-2xl font-semibold text-gray-700 ml-2">About</h1>
+          <img
+            src="./icons/option.png"
+            className="h-4 lg:h-6 w-4 lg:w-6"
+            alt=""
+          />
+          <h1 className="text-xl lg:text-2xl font-semibold text-gray-700 ml-2">
+            About
+          </h1>
         </div>
         <div className="flex flex-col lg:flex-row w-full h-full mt-5">
           <div className="flex flex-col w-full lg:w-1/2">
