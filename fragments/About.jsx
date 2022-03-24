@@ -13,9 +13,9 @@ function About() {
             <p className="text-gray-600 leading-6 lg:leading-7 text-sm lg:text-base">
               Dyno Js is a free and open-sourced dynamically typed javascript
               tool, that allows you to embed dynos into your webpage. These
-              dyno's can be anything that holds a cause. It can be a donation
-              link, a pinned topic or may be an appeal to your audience for a
-              petetion.
+              dynoa&apos;s can be anything that holds a cause. It can be a
+              donation link, a pinned topic or may be an appeal to your audience
+              for a petetion.
             </p>
             <div className="flex items-center mt-6">
               <img
@@ -28,8 +28,8 @@ function About() {
               </h2>
             </div>
             <p className="text-gray-500 text-[14px] leading-6 mt-3 mx-4 lg:mx-8">
-              and have worked on HTML project's then you must have noticed how a
-              script tag works? Right? Yeah you use it to extablish a link
+              and have worked on HTML project&apos;s then you must have noticed
+              how a script tag works? Right? Yeah you use it to extablish a link
               between your HTML and Javascript code. Similarly you will get an
               url for each an every Dyno you wanna embed, and need to put that
               url inside a script tag with a defer attribute.{" "}
@@ -51,9 +51,9 @@ function About() {
               </h2>
             </div>
             <p className="text-gray-500 text-[14px] leading-6 mt-3 mx-4 lg:mx-8">
-              may be you own a business or you've started a donation campaign
-              for some cause, we are here to help you! Wanna know how? See the
-              mentioned use cases:
+              may be you own a business or you&apos;ve started a donation
+              campaign for some cause, we are here to help you! Wanna know how?
+              See the mentioned use cases:
               <ul className="list-disc">
                 <li className="text-gray-500 text-[14px] leading-6 mt-3 mx-8 lg:mx-12">
                   If you have a business, you can create adverstisements with

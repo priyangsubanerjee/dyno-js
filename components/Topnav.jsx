@@ -12,7 +12,7 @@ function Topnav() {
           </div>
         </div>
         <div className="text-xs rounded-full border border-green-500 bg-green-50 py-1 px-2 text-green-500 ml-6">
-          What's new in v6.0.0?
+          What&apos;s new in v6.0.0?
         </div>
         <ul className="flex items-center ml-auto">
           <li className="text-sm text-gray-500 ml-6">
