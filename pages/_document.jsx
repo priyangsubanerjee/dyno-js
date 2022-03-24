@@ -15,11 +15,6 @@ class MyDocument extends Document {
             href="../public/icons/logo.png"
           />
           <link rel="apple-touch-icon" href="../public/icons/logo.png" />
-          <script
-            defer
-            src="https://dynojs.vercel.app/api/support-ukraine/dark"
-          ></script>
-          <script src="https://cdn.tailwindcss.com"></script>
 
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:site" content="http://dynojs.vercel.app" />
