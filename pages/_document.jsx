@@ -12,9 +12,12 @@ class MyDocument extends Document {
           <link
             rel="icon"
             type="image/x-icon"
-            href="../public/icons/logo.png"
+            href="https://media.graphcms.com/hx3S4MSQuyhd7GWDNq9a"
           />
-          <link rel="apple-touch-icon" href="../public/icons/logo.png" />
+          <link
+            rel="apple-touch-icon"
+            href="https://media.graphcms.com/hx3S4MSQuyhd7GWDNq9a"
+          />
 
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:site" content="http://dynojs.vercel.app" />

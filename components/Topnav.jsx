@@ -3,6 +3,7 @@ import * as AiIcons from "react-icons/ai";
 import * as MdIcons from "react-icons/md";
 import * as FaIcons from "react-icons/fa";
 import * as BsIcons from "react-icons/bs";
+import * as VscIcons from "react-icons/vsc";
 import { Link } from "react-scroll";
 import Sidenav from "./Sidenav";
 import { useState } from "react";
@@ -42,6 +43,12 @@ function Topnav() {
             <a href="" className="flex items-center">
               <AiIcons.AiOutlineShopping className="text-xl mr-2 text-green-500" />
               Market
+            </a>
+          </li>
+          <li className="text-sm text-gray-500 hover:text-black ml-6 transition-all">
+            <a href="" className="flex items-center">
+              <VscIcons.VscAccount className="text-xl mr-2 text-green-500" />
+              Profile
             </a>
           </li>
         </ul>

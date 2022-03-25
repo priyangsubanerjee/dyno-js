@@ -16,7 +16,7 @@ function SupportUkraine() {
             alt=""
           />
           <h1 className="text-xl lg:text-2xl font-semibold text-gray-700 ml-2">
-            Increased Support for Ukraine
+            Support for Ukraine
           </h1>
         </div>
         <div className="flex flex-col lg:flex-row w-full h-full mt-5">

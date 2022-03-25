@@ -57,6 +57,7 @@ function getTemplate(dyno, theme) {
 
     var companyName = document.createElement('div');
     companyName.style.display = 'flex';
+    companyName.style.alignItems = 'center';
     companyName.style.padding = '10px';
     companyName.style.backgroundColor = 'rgba(0, 0, 0, 0)';
 
@@ -69,13 +70,13 @@ function getTemplate(dyno, theme) {
 
     var companyNameText = document.createElement('p');
     companyNameText.style.margin = '0';
-    companyNameText.style.width = '100%';
+    companyNameText.style.marginLeft = 'auto';
     companyNameText.style.fontSize = '11px';
     companyNameText.style.textAlign = 'center';
     companyNameText.style.textDecoration = 'none';
     companyNameText.style.fontFamily = 'inherit';
     companyNameText.style.color = 'rgba(0, 0, 0, 0.5)';
-    companyNameText.innerHTML = '<a style="text-decoration:none; color:inherit" href="https://github.com/priyangsubanerjee/dyno">powered by <img src="http://easyfidb.herokuapp.com/download/9f737f76-b24c-487f-beb3-1a1acbaec0ed.png" style="height:15px; width:15px; margin:0px 2px 0px 4px; display:inline-block;"/> Dyno Js</a>';
+    companyNameText.innerHTML = '<a style="text-decoration:none; color:inherit" href="https://media.graphcms.com/hx3S4MSQuyhd7GWDNq9a" style="height:15px; width:15px; margin:0px 2px 0px 4px; display:inline-block;"/> Dyno Js</a>';
 
     companyName.appendChild(closeIcon);
     companyName.appendChild(companyNameText);
@@ -256,6 +257,7 @@ function getTemplate(dyno, theme) {
 
     var companyName = document.createElement('div');
     companyName.style.display = 'flex';
+        companyName.style.alignItems = 'center';
     companyName.style.padding = '10px';
     companyName.style.backgroundColor = '#1b1b1b';
 
@@ -268,13 +270,14 @@ function getTemplate(dyno, theme) {
 
     var companyNameText = document.createElement('p');
     companyNameText.style.margin = '0';
-    companyNameText.style.width = '100%';
+    companyNameText.style.width = 'auto';
+    companyNameText.style.marginLeft = 'auto';
     companyNameText.style.fontSize = '11px';
     companyNameText.style.textAlign = 'center';
     companyNameText.style.textDecoration = 'none';
     companyNameText.style.fontFamily = 'inherit';
     companyNameText.style.color = 'rgba(255, 255, 255, 0.5)';
-    companyNameText.innerHTML = '<a style="text-decoration:none; color:inherit" href="https://github.com/priyangsubanerjee/dyno">powered by <img src="http://easyfidb.herokuapp.com/download/9f737f76-b24c-487f-beb3-1a1acbaec0ed.png" style="height:15px; width:15px; margin:0px 2px 0px 4px; display:inline-block;"/> Dyno Js</a>';
+    companyNameText.innerHTML = '<a style="text-decoration:none; color:inherit" href="https://github.com/priyangsubanerjee/dyno">powered by <img src="https://media.graphcms.com/hx3S4MSQuyhd7GWDNq9a" style="height:15px; width:15px; margin:0px 2px 0px 4px; display:inline-block;"/> Dyno Js</a>';
 
     companyName.appendChild(closeIcon);
     companyName.appendChild(companyNameText);

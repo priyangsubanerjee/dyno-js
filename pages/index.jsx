@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <div>
       <Head>
-        <script defer src="/api/support-ukraine"></script>
+        <script defer src="/api/support-ukraine/dark"></script>
       </Head>
       <Topnav />
       <About />

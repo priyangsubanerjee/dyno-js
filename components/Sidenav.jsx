@@ -2,6 +2,7 @@ import React from "react";
 import * as MdIcons from "react-icons/md";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
+import * as BsIcons from "react-icons/bs";
 
 function Sidenav({ sidenav, setSideNav }) {
   return (
@@ -18,7 +19,7 @@ function Sidenav({ sidenav, setSideNav }) {
                 <li>
                   <a
                     href=""
-                    className="flex items-center py-4 px-4 border-b text-sm text-gray-500 font-medium"
+                    className="flex items-center py-4 px-4 border-b text-sm text-gray-500"
                   >
                     <MdIcons.MdHome className="mr-2 text-xl text-green-500" />
                     Home
@@ -27,7 +28,16 @@ function Sidenav({ sidenav, setSideNav }) {
                 <li>
                   <a
                     href=""
-                    className="flex items-center py-4 px-4 border-b text-sm text-gray-500 font-medium"
+                    className="flex items-center py-4 px-4 border-b text-sm text-gray-500"
+                  >
+                    <BsIcons.BsJournalBookmarkFill className="text-xl mr-2 text-green-500" />
+                    Documentation
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href=""
+                    className="flex items-center py-4 px-4 border-b text-sm text-gray-500"
                   >
                     <FaIcons.FaHandsHelping className="text-xl mr-2 text-green-500" />
                     Support Ukraine
@@ -36,7 +46,7 @@ function Sidenav({ sidenav, setSideNav }) {
                 <li>
                   <a
                     href=""
-                    className="flex items-center py-4 px-4 border-b text-sm text-gray-500 font-medium"
+                    className="flex items-center py-4 px-4 border-b text-sm text-gray-500"
                   >
                     <AiIcons.AiOutlineShopping className="text-xl mr-2 text-green-500" />
                     Market
