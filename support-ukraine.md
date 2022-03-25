@@ -15,7 +15,7 @@ Currently we have a single endpoint `/support-ukraine` that loads a fund raiser 
 ### Example for HTML
 ```bash
 <head>
-    <script defer src="https://dynojs.vercel.app/support-ukraine"></script>
+    <script defer src="https://dynojs.vercel.app/api/support-ukraine"></script>
 </head>
 ```
 
@@ -27,7 +27,7 @@ Currently we have a single endpoint `/support-ukraine` that loads a fund raiser 
 ```bash
 import Head from 'next/head'
 <Head>
-    <script defer src="https://dynojs.vercel.app/support-ukraine"></script>
+    <script defer src="https://dynojs.vercel.app/api/support-ukraine"></script>
 </Head>
 ```
 
@@ -38,13 +38,13 @@ import Head from 'next/head'
 ## Update, Now we support dark mode
 
 - To switch between themes, we need to add our desired theme, at the end of script `url`
-- [X] `/support-ukraine/dark`for dark mode.
-- [X] `/support-ukraine/light` for light mode.
-- [X] `/support-ukraine/` for default mode.
+- [X] `/api/support-ukraine/dark`for dark mode.
+- [X] `/api/support-ukraine/light` for light mode.
+- [X] `/api/support-ukraine/` for default mode.
 
 ```bash
 <head>
-    <script defer src="https://dynojs.vercel.app/support-ukraine/dark"></script>
+    <script defer src="https://dynojs.vercel.app/api/support-ukraine/dark"></script>
 </head>
 ``` 
 
@@ -53,7 +53,7 @@ import Head from 'next/head'
 ## View a live webpage
 
 - [Airdrop.io](https://airdropio.vercel.app/)
-- [EasyFiDB](https://easyfidb.vercel.app/)
+- [EasyFiDB](https://easyfidb.herokuapp.com/)
 - [DynoJS](https://dynojs.vercel.app/)
 
 <br/>
