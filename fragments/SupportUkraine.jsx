@@ -50,7 +50,7 @@ function SupportUkraine() {
             </code>
             <a
               className="flex items-center text-gray-500 hover:text-black text-sm mt-6 w-fit transition-all"
-              href=""
+              href="https://github.com/priyangsubanerjee/dyno-js/blob/main/support-ukraine.md"
             >
               <span className="border-b">
                 Implementation for other frameworks
