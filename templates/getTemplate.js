@@ -76,7 +76,7 @@ function getTemplate(dyno, theme) {
     companyNameText.style.textDecoration = 'none';
     companyNameText.style.fontFamily = 'inherit';
     companyNameText.style.color = 'rgba(0, 0, 0, 0.5)';
-    companyNameText.innerHTML = '<a style="text-decoration:none; color:inherit" href="https://github.com/priyangsubanerjee/dyno">powered by <img src="https://media.graphcms.com/hx3S4MSQuyhd7GWDNq9a" style="height:15px; width:15px; margin:0px 2px 0px 4px; display:inline-block;"/> Dyno Js</a>';
+    companyNameText.innerHTML = '<a style="text-decoration:none; color:inherit" href="https://github.com/priyangsubanerjee/dyno-js">powered by <img src="https://media.graphcms.com/hx3S4MSQuyhd7GWDNq9a" style="height:15px; width:15px; margin:0px 2px 0px 4px; display:inline-block;"/> Dyno Js</a>';
 
     companyName.appendChild(closeIcon);
     companyName.appendChild(companyNameText);
@@ -277,7 +277,7 @@ function getTemplate(dyno, theme) {
     companyNameText.style.textDecoration = 'none';
     companyNameText.style.fontFamily = 'inherit';
     companyNameText.style.color = 'rgba(255, 255, 255, 0.5)';
-    companyNameText.innerHTML = '<a style="text-decoration:none; color:inherit" href="https://github.com/priyangsubanerjee/dyno">powered by <img src="https://media.graphcms.com/hx3S4MSQuyhd7GWDNq9a" style="height:15px; width:15px; margin:0px 2px 0px 4px; display:inline-block;"/> Dyno Js</a>';
+    companyNameText.innerHTML = '<a style="text-decoration:none; color:inherit" href="https://github.com/priyangsubanerjee/dyno-js">powered by <img src="https://media.graphcms.com/hx3S4MSQuyhd7GWDNq9a" style="height:15px; width:15px; margin:0px 2px 0px 4px; display:inline-block;"/> Dyno Js</a>';
 
     companyName.appendChild(closeIcon);
     companyName.appendChild(companyNameText);

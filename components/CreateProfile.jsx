@@ -13,7 +13,7 @@ function CreateProfile({ createProfileActive, setCreateProfileActive }) {
       setEmail(user.email);
       setName(user.name);
     }
-  }, []);
+  });
 
   console.log(createProfileActive);
 
