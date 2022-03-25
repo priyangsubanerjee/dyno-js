@@ -86,7 +86,7 @@ function About() {
           <div className="flex justify-center items-center mt-8 lg:mt-0 w-full lg:w-1/2">
             <img
               src="./screenshots/dynoCard.png"
-              className="h-full max-h-[500px] hover:scale-105 transition-all cursor-pointer"
+              className="h-full max-h-[500px] transition-all cursor-pointer"
               alt=""
             />
           </div>

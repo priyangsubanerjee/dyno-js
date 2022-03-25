@@ -7,9 +7,11 @@ import * as VscIcons from "react-icons/vsc";
 import { Link } from "react-scroll";
 import Sidenav from "./Sidenav";
 import { useState } from "react";
+import CreateDyno from "./CreateDyno";
 
 function Topnav() {
   const [sidenav, setSideNav] = useState(false);
+  const [createDynoActive, setCreateDynoActive] = useState(false);
   return (
     <div>
       <div className="flex items-center border-b py-2 px-4 lg:px-6">
@@ -52,7 +54,10 @@ function Topnav() {
             </a>
           </li>
         </ul>
-        <button className="hidden lg:block bg-green-500 hover:bg-green-600 text-white h-fit py-2 px-4 rounded-full text-sm ml-6">
+        <button
+          onClick={() => setCreateDynoActive(true)}
+          className="hidden lg:block bg-green-500 hover:bg-green-600 text-white h-fit py-2 px-4 rounded-full text-sm ml-6"
+        >
           Create new
         </button>
         <div className="flex lg:hidden items-center ml-auto">
@@ -64,6 +69,10 @@ function Topnav() {
         </div>
       </div>
       <Sidenav sidenav={sidenav} setSideNav={setSideNav} />
+      <CreateDyno
+        createDynoActive={createDynoActive}
+        setCreateDynoActive={setCreateDynoActive}
+      />
     </div>
   );
 }
