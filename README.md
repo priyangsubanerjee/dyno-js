@@ -1,7 +1,4 @@
-<br/>
-<p align="center">
-<img width="300" src="http://easyfidb.herokuapp.com/download/6d906ed1-6c08-4597-b697-a8da5784075e.png"/>
-</p>
+![Lgog](https://media.graphcms.com/PKZeaASBabetAsYhDUgP)
 
 # Dyno Js
 
