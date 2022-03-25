@@ -36,7 +36,7 @@ function CreateProfile({ createProfileActive, setCreateProfileActive }) {
           style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
           className="fixed top-0 left-0 w-full h-full flex m-0 p-0"
         >
-          <div className="bg-white rounded-t-lg md:rounded-lg p-4 mt-auto md:max-w-[500px] h-auto lg:max-h-[540px] overflow-y-auto md:m-auto w-full">
+          <div className="bg-white rounded-t-lg md:rounded-lg p-4 mt-auto md:max-w-[550px] h-auto lg:max-h-[540px] overflow-y-auto md:m-auto w-full">
             <div className="p-4 w-full flex flex-col justify-center  rounded-md">
               <div className="flex flex-col items-center justify-center">
                 <VscIcons.VscAccount className="text-2xl text-green-500 mr-2" />

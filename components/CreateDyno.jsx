@@ -31,7 +31,7 @@ function CreateDyno({ createDynoActive, setCreateDynoActive }) {
           style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
           className="fixed top-0 left-0 w-full h-full flex"
         >
-          <div className="bg-white flex flex-col rounded-t-lg md:rounded-lg p-4 mt-auto md:max-w-[500px] h-auto overflow-y-auto md:m-auto w-full">
+          <div className="bg-white flex flex-col rounded-t-lg md:rounded-lg p-4 mt-auto md:max-w-[550px] h-auto overflow-y-auto md:m-auto w-full">
             <div className="flex  items-center">
               <HiIcons.HiViewGridAdd className="text-2xl text-green-500 mr-2" />
               <h1 className="text-xl font-semibold">Create dyno</h1>
