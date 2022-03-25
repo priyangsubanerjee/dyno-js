@@ -8,10 +8,12 @@ import { Link } from "react-scroll";
 import Sidenav from "./Sidenav";
 import { useState } from "react";
 import CreateDyno from "./CreateDyno";
+import CreateProfile from "./CreateProfile";
 
 function Topnav() {
   const [sidenav, setSideNav] = useState(false);
   const [createDynoActive, setCreateDynoActive] = useState(false);
+  const [createProfileActive, setCreateProfileActive] = useState(false);
   return (
     <div>
       <div className="flex items-center border-b py-2 px-4 lg:px-6">
@@ -48,7 +50,10 @@ function Topnav() {
             </a>
           </li>
           <li className="text-sm text-gray-500 hover:text-black ml-6 transition-all">
-            <a href="" className="flex items-center">
+            <a
+              onClick={() => setCreateProfileActive(true)}
+              className="flex items-center cursor-pointer"
+            >
               <VscIcons.VscAccount className="text-xl mr-2 text-green-500" />
               Profile
             </a>
@@ -75,6 +80,10 @@ function Topnav() {
       <CreateDyno
         createDynoActive={createDynoActive}
         setCreateDynoActive={setCreateDynoActive}
+      />
+      <CreateProfile
+        createProfileActive={createProfileActive}
+        setCreateProfileActive={setCreateProfileActive}
       />
     </div>
   );
