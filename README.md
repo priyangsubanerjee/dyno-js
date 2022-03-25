@@ -15,4 +15,4 @@ Dyno Js is a dynamically typed web tool, which allows to create donations links,
 
 ## Support Ukraine 🇺🇦
 
-- The crisis in Ukraine keeps unfolding. [Click here](https://github.com/priyangsubanerjee/dyno-js/blob/master/support-ukraine.md) to see, our response to the crisis in Ukraine. 
+- The crisis in Ukraine keeps unfolding. [Click here](https://github.com/priyangsubanerjee/dyno-js/blob/master/support-ukraine.md) to see, our response to the war in Ukraine. 
