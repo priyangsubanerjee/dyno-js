@@ -15,6 +15,14 @@ function CreateProfile({ createProfileActive, setCreateProfileActive }) {
     }
   });
 
+  useEffect(() => {
+    if (createProfileActive) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [createProfileActive]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const new_user = new User(name, email);
