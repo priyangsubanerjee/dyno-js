@@ -1,11 +1,15 @@
 import React from "react";
 import * as AiIcons from "react-icons/ai";
 import * as MdIcons from "react-icons/md";
+import * as FaIcons from "react-icons/fa";
+import * as BsIcons from "react-icons/bs";
+import { Link } from "react-scroll";
+
 function Topnav() {
   return (
     <div>
       <div className="flex items-center border-b py-2 px-4 lg:px-6">
-        <div className="flex items-center">
+        <div className="flex items-center cursor-pointer">
           <img src="./icons/logo.png" alt="logo" className="h-8 w-8" />
           <div className="ml-2">
             <h1 className="text-black text-xl font-bold">Dyno Js</h1>
@@ -17,22 +21,33 @@ function Topnav() {
           <AiIcons.AiOutlineRight className="ml-1 mt-[2px]" />
         </div>
         <ul className="hidden lg:flex items-center ml-auto">
-          <li className="text-sm text-gray-500 ml-6">
-            <a href="">Documentation</a>
+          <li className="text-sm text-gray-500 hover:text-black ml-6 transition-all">
+            <Link to="support-ukraine" smooth offset={100}>
+              <a className="flex items-center cursor-pointer">
+                <FaIcons.FaHandsHelping className="text-xl mr-2 text-green-500" />
+                Support Ukraine
+              </a>
+            </Link>
           </li>
-          <li className="text-sm text-gray-500 ml-6">
-            <a href="">Market</a>
+          <li className="text-sm text-gray-500 hover:text-black ml-6 transition-all">
+            <a href="" className="flex items-center">
+              <BsIcons.BsJournalBookmarkFill className="text-xl mr-2 text-green-500" />
+              Documentation
+            </a>
           </li>
-          <li className="text-sm text-gray-500 ml-6">
-            <a href="">Support</a>
+          <li className="text-sm text-gray-500 hover:text-black ml-6 transition-all">
+            <a href="" className="flex items-center">
+              <AiIcons.AiOutlineShopping className="text-xl mr-2 text-green-500" />
+              Market
+            </a>
           </li>
         </ul>
         <button className="hidden lg:block bg-green-500 hover:bg-green-600 text-white h-fit py-2 px-4 rounded-full text-sm ml-6">
           Create new
         </button>
         <div className="flex lg:hidden items-center ml-auto">
-          <MdIcons.MdOutlineAdd className="text-2xl text-green-500 mr-6" />
-          <MdIcons.MdMenu className="text-2xl text-gray-500" />
+          <MdIcons.MdOutlineAdd className="text-2xl text-green-500 mr-6 cursor-pointer" />
+          <MdIcons.MdMenu className="text-2xl text-gray-500 cursor-pointer" />
         </div>
       </div>
     </div>
