@@ -1,4 +1,4 @@
-<img src="http://easyfidb.herokuapp.com/download/dedf6276-eaad-4e6b-891c-2d28bdc59331.png">
+![CoverImage](https://media.graphcms.com/N2v87wALSuiUZrRZTeWm)
 
 <br/>
 

@@ -1,4 +1,4 @@
-![Lgog](https://media.graphcms.com/PKZeaASBabetAsYhDUgP)
+![Logo](https://media.graphcms.com/PKZeaASBabetAsYhDUgP)
 
 # Dyno Js
 
