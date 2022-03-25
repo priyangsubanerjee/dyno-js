@@ -16,6 +16,15 @@ function CreateDyno({ createDynoActive, setCreateDynoActive }) {
       setUser(user);
     }
   });
+
+  useEffect(() => {
+    if (createDynoActive) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [createDynoActive]);
+
   return (
     <div>
       {createDynoActive ? (
@@ -65,7 +74,7 @@ function CreateDyno({ createDynoActive, setCreateDynoActive }) {
                   <input
                     type="text"
                     placeholder="Cover image link"
-                    className="border py-2 px-4 ml-0 md:ml-1 mt-4 ml-mt-4 rounded text-sm bg-transparent w-full focus:border-green-500 outline-none"
+                    className="border py-2 px-4 ml-0 md:ml-1 mt-4 md:mt-0 ml-mt-4 rounded text-sm bg-transparent w-full focus:border-green-500 outline-none"
                     onChange={(e) => setName(e.target.value)}
                     id=""
                   />
@@ -96,7 +105,7 @@ function CreateDyno({ createDynoActive, setCreateDynoActive }) {
                   <input
                     type="text"
                     placeholder="Button link"
-                    className="border py-2 px-4 ml-0 md:ml-1 mt-4 ml-mt-4 rounded text-sm bg-transparent w-full focus:border-green-500 outline-none"
+                    className="border py-2 px-4 ml-0 md:ml-1 mt-4 md:mt-0 ml-mt-4 rounded text-sm bg-transparent w-full focus:border-green-500 outline-none"
                     onChange={(e) => setName(e.target.value)}
                     id=""
                   />

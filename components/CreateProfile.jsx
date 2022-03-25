@@ -15,8 +15,6 @@ function CreateProfile({ createProfileActive, setCreateProfileActive }) {
     }
   });
 
-  console.log(createProfileActive);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const new_user = new User(name, email);
