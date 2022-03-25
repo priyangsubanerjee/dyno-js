@@ -3,8 +3,11 @@ import * as MdIcons from "react-icons/md";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as BsIcons from "react-icons/bs";
+import CreateDyno from "./CreateDyno";
+import { useState } from "react";
 
 function Sidenav({ sidenav, setSideNav }) {
+  const [createDynoActive, setCreateDynoActive] = useState(false);
   return (
     <div>
       {sidenav && (
@@ -53,8 +56,11 @@ function Sidenav({ sidenav, setSideNav }) {
                   </a>
                 </li>
               </ul>
-              <div className="flex px-6 py-8 bg-gray-50">
-                <button className="bg-green-500 hover:bg-green-600 text-white flex h-fit text-center justify-center py-3 px-4 rounded-full text-sm w-full">
+              <div className="flex px-6 py-8">
+                <button
+                  onClick={() => setCreateDynoActive(true) & setSideNav(false)}
+                  className="bg-green-500 hover:bg-green-600 text-white flex h-fit text-center justify-center py-3 px-4 rounded-full text-sm w-full"
+                >
                   Create new
                 </button>
               </div>
@@ -62,6 +68,10 @@ function Sidenav({ sidenav, setSideNav }) {
           </div>
         </div>
       )}
+      <CreateDyno
+        createDynoActive={createDynoActive}
+        setCreateDynoActive={setCreateDynoActive}
+      />
     </div>
   );
 }

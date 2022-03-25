@@ -61,7 +61,10 @@ function Topnav() {
           Create new
         </button>
         <div className="flex lg:hidden items-center ml-auto">
-          <MdIcons.MdOutlineAdd className="text-2xl text-green-500 mr-6 cursor-pointer" />
+          <MdIcons.MdOutlineAdd
+            onClick={() => setCreateDynoActive(true)}
+            className="text-2xl text-green-500 mr-6 cursor-pointer"
+          />
           <MdIcons.MdMenu
             className="text-2xl text-gray-500 cursor-pointer"
             onClick={() => setSideNav(!sidenav)}
