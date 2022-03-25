@@ -30,7 +30,7 @@ function SupportUkraine() {
             <div className="mt-6">
               <BsIcons.BsFillCompassFill className="text-3xl text-yellow-400 inline-block" />
               <span className="text-lg lg:text-xl font-semibold ml-2 text-gray-700">
-                Made a dyno for the cause.
+                Dyno for a cause.
               </span>
             </div>
             <p className="text-gray-500 w-full lg:w-1/2 text-[14px] leading-6 mt-3 ml-2 lg:mx-8">
