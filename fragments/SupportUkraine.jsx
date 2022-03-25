@@ -1,6 +1,5 @@
 import React from "react";
 import * as BsIcons from "react-icons/bs";
-import Gist from "react-gists";
 
 function SupportUkraine() {
   return (
