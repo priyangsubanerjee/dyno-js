@@ -41,7 +41,7 @@ function SupportUkraine() {
                 Read more on Github.
               </a>
             </p>
-            <code className="text-sm border bg-blue-50 overflow-auto whitespace-nowrap border-blue-300 p-3 rounded-md mt-5">
+            <code className="text-sm border bg-blue-50 overflow-auto whitespace-nowrap border-blue-300 px-3 py-3 rounded-md mt-5">
               &lt;head&gt; <br />
               &nbsp;&lt;script defer
               src="https://dynojs.vercel.app/api/support-ukraine/light"&gt;

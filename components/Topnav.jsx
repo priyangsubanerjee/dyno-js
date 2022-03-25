@@ -4,8 +4,11 @@ import * as MdIcons from "react-icons/md";
 import * as FaIcons from "react-icons/fa";
 import * as BsIcons from "react-icons/bs";
 import { Link } from "react-scroll";
+import Sidenav from "./Sidenav";
+import { useState } from "react";
 
 function Topnav() {
+  const [sidenav, setSideNav] = useState(false);
   return (
     <div>
       <div className="flex items-center border-b py-2 px-4 lg:px-6">
@@ -47,9 +50,13 @@ function Topnav() {
         </button>
         <div className="flex lg:hidden items-center ml-auto">
           <MdIcons.MdOutlineAdd className="text-2xl text-green-500 mr-6 cursor-pointer" />
-          <MdIcons.MdMenu className="text-2xl text-gray-500 cursor-pointer" />
+          <MdIcons.MdMenu
+            className="text-2xl text-gray-500 cursor-pointer"
+            onClick={() => setSideNav(!sidenav)}
+          />
         </div>
       </div>
+      <Sidenav sidenav={sidenav} setSideNav={setSideNav} />
     </div>
   );
 }
