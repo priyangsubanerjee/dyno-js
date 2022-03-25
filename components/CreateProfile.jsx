@@ -7,7 +7,6 @@ import User from "../user/User";
 function CreateProfile({ createProfileActive, setCreateProfileActive }) {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
-
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("user"));
     if (user) {

@@ -7,3 +7,5 @@ function FetchUser() {
     return user;
   }
 }
+
+export default FetchUser;
