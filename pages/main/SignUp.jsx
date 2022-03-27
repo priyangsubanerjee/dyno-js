@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { useState, useEffect } from "react";
-import createAccount from "../../controllers/Account";
+import createAccount from "../../controllers/account";
 import { User, getCurrentUser } from "../../user/User";
 import { useRouter } from "next/router";
 
