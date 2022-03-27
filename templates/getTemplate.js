@@ -10,7 +10,7 @@ function getTemplate(dyno, theme) {
 
     var div = document.createElement('div');
     div.style.position = 'fixed';
-    div.style.bottom = '50px';
+    div.style.bottom = '40px';
     div.style.right = '0px';
     div.style.display = 'flex';
     div.style.zIndex = '9999';
@@ -177,7 +177,7 @@ function getTemplate(dyno, theme) {
             div.style.right = '0px';
             modalOpen = false;
         }else{
-            modal.style.right = '70px';
+            modal.style.right = '60px';
             div.style.right = '-100px';
             modalOpen = true;
         }
@@ -210,7 +210,7 @@ function getTemplate(dyno, theme) {
 
     var div = document.createElement('div');
     div.style.position = 'fixed';
-    div.style.bottom = '50px';
+    div.style.bottom = '40px';
     div.style.right = '0px';
     div.style.display = 'flex';
     div.style.zIndex = '9999';
@@ -249,7 +249,7 @@ function getTemplate(dyno, theme) {
     modal.style.width = '300px';
     modal.style.backgroundColor = '#1f1f1f';
     modal.style.fontFamily = '"Open Sans", sans-serif';
-    modal.style.borderRadius = '7px';
+    modal.style.borderRadius = '10px';
     modal.style.overflow = 'auto';
     modal.style.transition = 'all 0.5s ease-in-out';
     modal.style.boxShadow = '0 0 20px 10px rgba(0, 0, 0, 0.1)';
@@ -378,7 +378,7 @@ function getTemplate(dyno, theme) {
             div.style.right = '0px';
             modalOpen = false;
         }else{
-            modal.style.right = '70px';
+            modal.style.right = '60px';
             div.style.right = '-100px';
             modalOpen = true;
         }

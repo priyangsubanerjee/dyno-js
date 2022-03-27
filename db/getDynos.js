@@ -1,9 +1,9 @@
 import { gql, GraphQLClient } from "graphql-request";
 
 async function getDynos(endpoint) {
-  const GraphClient = new GraphQLClient(process.env.DB_URL, {
+  const GraphClient = new GraphQLClient(process.env.NEXT_PUBLIC_DB_URL, {
     headers: {
-      Authorization: process.env.BEARER_TOKEN,
+      Authorization: process.env.NEXT_PUBLIC_BEARER_TOKEN,
     },
   });
   const query = gql`
