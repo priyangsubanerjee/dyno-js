@@ -12,6 +12,8 @@
     "@uiw/react-md-editor": "^3.11.1",
     "@uiw/react-textarea-code-editor": "^2.0.1",
     "axios": "^0.26.1",
+    "body-parser": "^1.19.2",
+    "express": "^4.17.3",
     "graphql-request": "^4.2.0",
     "next": "12.1.0",
     "react": "17.0.2",
