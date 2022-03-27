@@ -1,7 +1,47 @@
 import Link from "next/link";
 import React from "react";
+import { useState, useEffect } from "react";
+import createAccount from "../../controllers/Account";
+import { User, getCurrentUser } from "../../user/User";
+import { useRouter } from "next/router";
 
 function SignUp() {
+  const router = useRouter();
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+    password: "",
+    avatar: "",
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const res = await createAccount(user.email, user.password);
+      const n_user = new User(
+        res.createAccount.email,
+        res.createAccount.id,
+        res.createAccount.name,
+        res.createAccount.avatar
+      );
+      n_user.save();
+      alert("Account created successfully");
+      router.push("/dashboard");
+    } catch (error) {
+      const error_msg = error.message.split(":")[0];
+      if (error_msg === `value is not unique for the field "email"`) {
+        alert("User already exists");
+      }
+    }
+  };
+
+  useEffect(() => {
+    const user = getCurrentUser();
+    if (user) {
+      router.push("/dashboard");
+    }
+  }, []);
+
   return (
     <div className="px-6 flex flex-col justify-center items-center pt-[10%]">
       <div className="bg-white w-full lg:w-[500px] rounded-lg p-6 border">
@@ -22,7 +62,7 @@ function SignUp() {
         </div>
         <div className="mt-6 flex flex-col items-center">
           <form
-            onSubmit={(e) => e.preventDefault()}
+            onSubmit={(e) => handleSubmit(e)}
             className="flex flex-col w-full"
           >
             <div className="flex flex-col">
@@ -32,6 +72,7 @@ function SignUp() {
               <input
                 type="email"
                 placeholder="Enter your email"
+                onChange={(e) => setUser({ ...user, email: e.target.value })}
                 className="w-full py-2 px-3 mt-2 text-sm border border-gray-200 rounded"
               />
             </div>
@@ -42,6 +83,7 @@ function SignUp() {
               <input
                 type="password"
                 placeholder="Set a password"
+                onChange={(e) => setUser({ ...user, password: e.target.value })}
                 className="w-full py-2 px-3 mt-2 text-sm border border-gray-200 rounded"
               />
               <input

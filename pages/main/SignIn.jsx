@@ -1,7 +1,28 @@
 import Link from "next/link";
 import React from "react";
+import { useState, useEffect } from "react";
+import { loginAccount } from "../../controllers/account";
+import { useRouter } from "next/router";
 
 function SIgnIn() {
+  const router = useRouter();
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await loginAccount(user.email, user.password);
+      if (response.accounts) {
+        router.push("/dashboard");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="px-6 flex flex-col justify-center items-center pt-[10%]">
       <div className="bg-white w-full lg:w-[500px] rounded-lg p-6 border">
@@ -22,7 +43,7 @@ function SIgnIn() {
         </div>
         <div className="mt-6 flex flex-col items-center">
           <form
-            onSubmit={(e) => e.preventDefault()}
+            onSubmit={(e) => handleSubmit(e)}
             className="flex flex-col w-full"
           >
             <div className="flex flex-col">
@@ -32,6 +53,8 @@ function SIgnIn() {
               <input
                 type="email"
                 placeholder="Enter your registered email"
+                onChange={(e) => setUser({ ...user, email: e.target.value })}
+                value={user.email}
                 className="w-full py-2 px-3 mt-2 text-sm border border-gray-200 rounded"
               />
             </div>
@@ -42,6 +65,8 @@ function SIgnIn() {
               <input
                 type="password"
                 placeholder="Enter your password"
+                onChange={(e) => setUser({ ...user, password: e.target.value })}
+                value={user.password}
                 className="w-full py-2 px-3 mt-2 text-sm border border-gray-200 rounded"
               />
               <input
