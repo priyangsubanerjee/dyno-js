@@ -5,7 +5,7 @@ import logo from "../../public/icons/logo.png";
 import Image from "next/image";
 import { getSalutation } from "../../helpers/dateTime";
 import { useRouter } from "next/router";
-function index() {
+function Dashboard() {
   const router = useRouter();
   const [filter, setFilter] = useState("All");
   const [user, setUser] = useState(null);
@@ -131,4 +131,4 @@ function index() {
   );
 }
 
-export default index;
+export default Dashboard;
