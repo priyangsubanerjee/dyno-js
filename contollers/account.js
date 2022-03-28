@@ -89,4 +89,14 @@ const matchToken = async () => {
   }
 };
 
-export { createAccount, matchToken };
+const logOut = async () => {
+  const user = getCurrentUser();
+  if (user) {
+    localStorage.removeItem("dyno-cached");
+    return true;
+  } else {
+    return false;
+  }
+};
+
+export { createAccount, matchToken, logOut };
