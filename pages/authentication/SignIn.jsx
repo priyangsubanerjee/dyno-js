@@ -1,18 +1,30 @@
 import Link from "next/link";
 import React from "react";
+import Head from "next/head";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { createAccount, matchToken } from "../../contollers/account";
 import { getCurrentUser } from "../../models/User";
+import * as AiIcons from "react-icons/ai";
 
 function SIgnIn() {
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
   useEffect(async () => {
+    setLoading(true);
     const loggedIn = await matchToken();
-    loggedIn == true ? router.push("/dashboard") : null;
+    loggedIn == true
+      ? router.push("/dashboard") & setLoading(false)
+      : setLoading(false);
   }, []);
   return (
     <div className="px-4 flex flex-col justify-center items-center pt-[10%]">
+      <Head>
+        <title>
+          Sign In | Create responsive &amp; embeddable cards, with no code, for
+          your project.
+        </title>
+      </Head>
       <div className="bg-white w-full lg:w-[500px] rounded-lg p-6 border">
         <div className="flex flex-col">
           <img src="../icons/logo.png" className="h-8 w-8" alt="" />
@@ -53,12 +65,19 @@ function SIgnIn() {
                 placeholder="Enter your password"
                 className="w-full py-2 px-3 mt-2 text-sm border border-gray-200 rounded"
               />
-              <input
+              <button
                 type="submit"
-                name=""
                 id=""
-                className="bg-green-500 hover:bg-green-600 cursor-pointer transition-all text-white mt-8 text-sm py-3 px-4 w-full rounded"
-              />
+                className="bg-green-500 flex justify-center items-center hover:bg-green-600 cursor-pointer transition-all text-white mt-8 text-sm py-3 px-4 w-full rounded"
+              >
+                <span>
+                  {loading ? (
+                    <AiIcons.AiOutlineLoading3Quarters className="textw-white animate-spin text-xl" />
+                  ) : (
+                    "Submit"
+                  )}
+                </span>
+              </button>
             </div>
           </form>
           <Link href={`/main/ForgotPassword`}>

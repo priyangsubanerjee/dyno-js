@@ -4,9 +4,12 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { createAccount, matchToken } from "../../contollers/account";
 import { getCurrentUser } from "../../models/User";
+import * as AiIcons from "react-icons/ai";
+import Head from "next/head";
 
 function SignUp() {
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
   const [u_user, setU_user] = useState({
     email: "",
     password: "",
@@ -14,10 +17,11 @@ function SignUp() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     const response = await createAccount(u_user.email, u_user.password);
     response == true
-      ? alert("Account created") & router.push("/dashboard")
-      : alert("Account not created");
+      ? alert("Account created") & router.push("/dashboard") & setLoading(false)
+      : alert("Account not created") & setLoading(false);
   };
 
   useEffect(async () => {
@@ -27,6 +31,12 @@ function SignUp() {
 
   return (
     <div className="px-4 flex flex-col justify-center items-center pt-[10%]">
+      <Head>
+        <title>
+          Sign Up | Create responsive &amp; embeddable cards, with no code, for
+          your project.
+        </title>
+      </Head>
       <div className="bg-white w-full lg:w-[500px] rounded-lg p-6 border">
         <div className="flex flex-col">
           <img src="../icons/logo.png" className="h-8 w-8" alt="" />
@@ -75,13 +85,19 @@ function SignUp() {
                 value={u_user.password}
                 className="w-full py-2 px-3 mt-2 text-sm border border-gray-200 rounded"
               />
-              <input
+              <button
                 type="submit"
-                value={`Sign up`}
-                name=""
                 id=""
-                className="bg-green-500 hover:bg-green-600 cursor-pointer transition-all text-white mt-8 text-sm py-3 px-4 w-full rounded"
-              />
+                className="bg-green-500 flex justify-center items-center hover:bg-green-600 cursor-pointer transition-all text-white mt-8 text-sm py-3 px-4 w-full rounded"
+              >
+                <span>
+                  {loading ? (
+                    <AiIcons.AiOutlineLoading3Quarters className="textw-white animate-spin text-xl" />
+                  ) : (
+                    "Submit"
+                  )}
+                </span>
+              </button>
             </div>
           </form>
           <div className="mt-6">
