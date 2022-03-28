@@ -1,6 +1,34 @@
 import React from "react";
-
+import { useState } from "react";
+import * as AiIcons from "react-icons/ai";
+import { send2FA } from "../../contollers/account";
 function ForgotPassword() {
+  const [code, setCode] = useState("");
+  const [sentCode, setSentCode] = useState("");
+  const [codeSent, setCodeSent] = useState(false);
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const sendCode = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    const resposne = await send2FA(email);
+    if (resposne.data.code) {
+      setCode(resposne.data.code);
+      setCodeSent(true);
+      console.log(resposne.data.code);
+    }
+    setLoading(false);
+  };
+
+  const matchCode = async (e) => {
+    e.preventDefault();
+    if (sentCode == code) {
+      alert("Code Matched");
+      window.location.reload();
+    } else {
+      alert("Code not matched");
+    }
+  };
   return (
     <div className="px-4 flex flex-col justify-center items-center py-[10%]">
       <div className="bg-white w-full lg:w-[500px] rounded-lg p-6 border">
@@ -21,33 +49,79 @@ function ForgotPassword() {
           <hr className="mt-4" />
         </div>
         <div className="mt-6 flex flex-col items-center">
-          <form
-            onSubmit={(e) => e.preventDefault()}
-            className="flex flex-col w-full"
-          >
-            <div className="flex flex-col">
-              <label className="text-gray-700 text-sm font-semibold">
-                Email
-              </label>
-              <input
-                type="email"
-                placeholder="Enter registered email"
-                className="w-full py-2 px-3 mt-2 text-sm border border-gray-200 rounded"
-              />
-              <small className="mt-3 text-gray-500">
-                You will receive a 2FA code in this email.
-              </small>
-            </div>
-            <div className="flex flex-col mt-6">
-              <input
-                type="submit"
-                name=""
-                value={`Send 2FA code`}
-                id=""
-                className="bg-green-500 hover:bg-green-600 cursor-pointer transition-all text-white text-sm py-3 px-4 w-full rounded"
-              />
-            </div>
-          </form>
+          {codeSent == false ? (
+            <form
+              onSubmit={(e) => sendCode(e)}
+              className="flex flex-col w-full"
+            >
+              <div className="flex flex-col">
+                <label className="text-gray-700 text-sm font-semibold">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  placeholder="Enter registered email"
+                  onChange={(e) => setEmail(e.target.value)}
+                  value={email}
+                  className="w-full py-2 px-3 mt-2 text-sm border border-gray-200 rounded"
+                />
+                <small className="mt-3 text-gray-500">
+                  You will receive a 2FA code in this email.
+                </small>
+              </div>
+              <div className="flex flex-col mt-6">
+                <button
+                  type="submit"
+                  id=""
+                  className="bg-green-500 flex justify-center items-center hover:bg-green-600 cursor-pointer transition-all text-white mt-8 text-sm py-3 px-4 w-full rounded"
+                >
+                  <span>
+                    {loading ? (
+                      <AiIcons.AiOutlineLoading3Quarters className="textw-white animate-spin text-xl" />
+                    ) : (
+                      "Submit"
+                    )}
+                  </span>
+                </button>
+              </div>
+            </form>
+          ) : (
+            <form
+              onSubmit={(e) => matchCode(e)}
+              className="flex flex-col w-full"
+            >
+              <div className="flex flex-col">
+                <label className="text-gray-700 text-sm font-semibold">
+                  Code
+                </label>
+                <input
+                  type="text"
+                  placeholder="Enter code"
+                  onChange={(e) => setSentCode(e.target.value)}
+                  value={sentCode}
+                  className="w-full py-2 px-3 mt-2 text-sm border border-gray-200 rounded"
+                />
+                <small className="mt-3 text-gray-500">
+                  Enter the code you received in your email.
+                </small>
+              </div>
+              <div className="flex flex-col mt-6">
+                <button
+                  type="submit"
+                  id=""
+                  className="bg-green-500 flex justify-center items-center hover:bg-green-600 cursor-pointer transition-all text-white mt-8 text-sm py-3 px-4 w-full rounded"
+                >
+                  <span>
+                    {loading ? (
+                      <AiIcons.AiOutlineLoading3Quarters className="textw-white animate-spin text-xl" />
+                    ) : (
+                      "Submit"
+                    )}
+                  </span>
+                </button>
+              </div>
+            </form>
+          )}
         </div>
         <div className="mt-6">
           <p className="text-gray-700 text-sm">Having trouble?</p>

@@ -2,6 +2,7 @@ import { gql, GraphQLClient } from "graphql-request";
 import { v4 as uuidv4 } from "uuid";
 import { encrypt, decrypt } from "../crypto";
 import { User, saveCurrentUser, getCurrentUser } from "../models/User";
+import axios from "axios";
 
 const client = new GraphQLClient(process.env.NEXT_PUBLIC_DB_URL, {
   headers: {
@@ -128,4 +129,12 @@ const logOut = async () => {
   }
 };
 
-export { createAccount, matchToken, logOut, loginUser };
+const send2FA = async (email) => {
+  console.log(email);
+  const response = await axios.post("/api/main/mail", {
+    email: email,
+  });
+  return response;
+};
+
+export { createAccount, matchToken, logOut, loginUser, send2FA };
