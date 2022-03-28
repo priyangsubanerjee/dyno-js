@@ -23,7 +23,9 @@ function SignUp() {
     try {
       console.log("trying..");
       const res = await createAccount(user.email, user.password);
-      res == true ? router.push("/dashboard") : null;
+      res == true
+        ? router.push("/dashboard")
+        : alert("error creating account, this email is already in use");
     } catch (error) {
       console.log(error);
       const error_msg = error.message.split(":")[0];
