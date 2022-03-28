@@ -3,13 +3,17 @@ import React from "react";
 import Head from "next/head";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { createAccount, matchToken } from "../../contollers/account";
+import { createAccount, matchToken, loginUser } from "../../contollers/account";
 import { getCurrentUser } from "../../models/User";
 import * as AiIcons from "react-icons/ai";
 
 function SIgnIn() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
   useEffect(async () => {
     setLoading(true);
     const loggedIn = await matchToken();
@@ -17,6 +21,15 @@ function SIgnIn() {
       ? router.push("/dashboard") & setLoading(false)
       : setLoading(false);
   }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    const response = await loginUser(user.email, user.password);
+    response == true
+      ? alert("Logged in") & router.push("/dashboard") & setLoading(false)
+      : alert("Logged in failed") & setLoading(false);
+  };
   return (
     <div className="px-4 flex flex-col justify-center items-center pt-[10%]">
       <Head>
@@ -52,6 +65,8 @@ function SIgnIn() {
               </label>
               <input
                 type="email"
+                onChange={(e) => setUser({ ...user, email: e.target.value })}
+                value={user.email}
                 placeholder="Enter your registered email"
                 className="w-full py-2 px-3 mt-2 text-sm border border-gray-200 rounded"
               />
@@ -62,6 +77,8 @@ function SIgnIn() {
               </label>
               <input
                 type="password"
+                onChange={(e) => setUser({ ...user, password: e.target.value })}
+                value={user.password}
                 placeholder="Enter your password"
                 className="w-full py-2 px-3 mt-2 text-sm border border-gray-200 rounded"
               />

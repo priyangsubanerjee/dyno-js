@@ -89,6 +89,35 @@ const matchToken = async () => {
   }
 };
 
+const loginUser = async (email, password) => {
+  const query = gql`
+    query {
+        accounts(where: { email: "${email}", password: "${password}" }) {
+            id
+            email
+            token
+        }
+    }
+    `;
+
+  try {
+    const response_1 = await client.request(query);
+    if (response_1.accounts.length == 1) {
+      const response_2 = await publishAccount(response_1.accounts[0].id);
+      const n_user = new User(
+        response_2.publishAccount.id,
+        response_2.publishAccount.email,
+        response_2.publishAccount.token
+      );
+      const saved = await saveCurrentUser(n_user);
+      return saved;
+    }
+    return false;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const logOut = async () => {
   const user = getCurrentUser();
   if (user) {
@@ -99,4 +128,4 @@ const logOut = async () => {
   }
 };
 
-export { createAccount, matchToken, logOut };
+export { createAccount, matchToken, logOut, loginUser };
