@@ -1,43 +1,28 @@
 import Link from "next/link";
 import React from "react";
 import { useState, useEffect } from "react";
-import {
-  createAccount,
-  loginAccount,
-  checkIfLoggedIn,
-} from "../../controllers/account";
-import { User } from "../../user/User";
 import { useRouter } from "next/router";
+import { createAccount, matchToken } from "../../contollers/account";
+import { getCurrentUser } from "../../models/User";
 
 function SignUp() {
   const router = useRouter();
-  const [user, setUser] = useState({
-    name: "",
+  const [u_user, setU_user] = useState({
     email: "",
     password: "",
-    avatar: "",
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      console.log("trying..");
-      const res = await createAccount(user.email, user.password);
-      res == true
-        ? router.push("/dashboard")
-        : alert("error creating account, this email is already in use");
-    } catch (error) {
-      console.log(error);
-      const error_msg = error.message.split(":")[0];
-      if (error_msg === `value is not unique for the field "email"`) {
-        alert("User already exists");
-      }
-    }
+    const response = await createAccount(u_user.email, u_user.password);
+    response == true
+      ? alert("Account created") & router.push("/dashboard")
+      : alert("Account not created");
   };
 
   useEffect(async () => {
-    const response = await checkIfLoggedIn();
-    response == true ? router.push("/dashboard") : null;
+    const loggedIn = await matchToken();
+    loggedIn == true ? router.push("/dashboard") : null;
   }, []);
 
   return (
@@ -50,7 +35,7 @@ function SignUp() {
           </h1>
           <p className="text-gray-500 text-sm mt-2">
             Already have an account?{" "}
-            <Link href={`/main/SignIn`}>
+            <Link href={`/authentication/SignIn`}>
               <a className="text-green-500 hover:text-green-600 font-medium">
                 Sign in
               </a>
@@ -70,7 +55,10 @@ function SignUp() {
               <input
                 type="email"
                 placeholder="Enter your email"
-                onChange={(e) => setUser({ ...user, email: e.target.value })}
+                onChange={(e) =>
+                  setU_user({ ...u_user, email: e.target.value })
+                }
+                value={u_user.email}
                 className="w-full py-2 px-3 mt-2 text-sm border border-gray-200 rounded"
               />
             </div>
@@ -81,7 +69,10 @@ function SignUp() {
               <input
                 type="password"
                 placeholder="Set a password"
-                onChange={(e) => setUser({ ...user, password: e.target.value })}
+                onChange={(e) =>
+                  setU_user({ ...u_user, password: e.target.value })
+                }
+                value={u_user.password}
                 className="w-full py-2 px-3 mt-2 text-sm border border-gray-200 rounded"
               />
               <input

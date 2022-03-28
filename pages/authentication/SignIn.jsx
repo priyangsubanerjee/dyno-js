@@ -1,32 +1,16 @@
 import Link from "next/link";
 import React from "react";
 import { useState, useEffect } from "react";
-import { loginAccount, checkIfLoggedIn } from "../../controllers/account";
 import { useRouter } from "next/router";
-import { User } from "../../user/User";
+import { createAccount, matchToken } from "../../contollers/account";
+import { getCurrentUser } from "../../models/User";
 
 function SIgnIn() {
   const router = useRouter();
-  const [user, setUser] = useState({
-    email: "",
-    password: "",
-  });
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await loginAccount(user.email, user.password);
-      res == true ? router.push("/dashboard") : null;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   useEffect(async () => {
-    const response = await checkIfLoggedIn();
-    response == true ? router.push("/dashboard") : null;
+    const loggedIn = await matchToken();
+    loggedIn == true ? router.push("/dashboard") : null;
   }, []);
-
   return (
     <div className="px-6 flex flex-col justify-center items-center pt-[10%]">
       <div className="bg-white w-full lg:w-[500px] rounded-lg p-6 border">
@@ -37,7 +21,7 @@ function SIgnIn() {
           </h1>
           <p className="text-gray-500 text-sm mt-2">
             Dont have an account?{" "}
-            <Link href={`/main/SignUp`}>
+            <Link href={`/authentication/SignUp`}>
               <a className="text-green-500 hover:text-green-600 font-medium">
                 Sign up
               </a>
@@ -57,8 +41,6 @@ function SIgnIn() {
               <input
                 type="email"
                 placeholder="Enter your registered email"
-                onChange={(e) => setUser({ ...user, email: e.target.value })}
-                value={user.email}
                 className="w-full py-2 px-3 mt-2 text-sm border border-gray-200 rounded"
               />
             </div>
@@ -69,8 +51,6 @@ function SIgnIn() {
               <input
                 type="password"
                 placeholder="Enter your password"
-                onChange={(e) => setUser({ ...user, password: e.target.value })}
-                value={user.password}
                 className="w-full py-2 px-3 mt-2 text-sm border border-gray-200 rounded"
               />
               <input

@@ -1,63 +1,38 @@
 import Head from "next/head";
-import Image from "next/image";
 import Link from "next/link";
-import logo from "../public/icons/logo.png";
 import * as BsIcons from "react-icons/bs";
 import * as FaIcons from "react-icons/fa";
+import Topnav from "../components/Topnav";
+import { useEffect } from "react";
+import { encrypt, decrypt } from "../crypto";
+
 export default function Home() {
+  useEffect(() => {}, []);
+
   return (
     <div>
       <Head>
         <script defer src="/api/support-ukraine/dark"></script>
         <title>Home | Dyno JS</title>
       </Head>
-      <div className="flex items-center px-8 py-4 border-b">
-        <div className="flex items-center">
-          <div className="w-10 h-10 relative">
-            <Image
-              src={logo}
-              layout={"fill"}
-              objectFit={"contain"}
-              objectPosition={"center"}
-            />
-          </div>
-          <div className="ml-3">
-            <h1 className="text-xl font-bold">Dyno JS</h1>
-            <p className="text-sm text-gray-500">Embeddable cards</p>
-          </div>
-        </div>
-        <ul className="flex items-center ml-auto">
-          <li className="mx-3 text-sm text-gray-500 cursor-pointer">Home</li>
-          <li className="mx-3 text-sm text-gray-500 cursor-pointer">Blog</li>
-          <li className="mx-3 text-sm text-gray-500 cursor-pointer">
-            Documentaion
-          </li>
-          <li className="mx-3 cursor-pointer">
-            <Link href="/main/SignIn">
-              <a className="px-8 py-3 text-white bg-green-500 hover:bg-green-600 transition-all rounded-full text-sm">
-                Sign in
-              </a>
-            </Link>
-          </li>
-        </ul>
-      </div>
-      <div className="px-48 mt-20">
-        <div className="flex items-center justify-center">
-          <div className="mr-6">
-            <h1 className="text-4xl font-bold leading-[1.4] text-gray-800">
+      <Topnav />
+      <div className="px-4 lg:px-48 mt-8 lg:mt-20">
+        <div className="flex flex-col lg:flex-row items-center justify-center">
+          <div className="mr-0 lg:mr-6">
+            <h1 className="text-3xl lg:text-4xl font-bold leading-[1.4] text-gray-800">
               Create <span className="text-green-500">responsive</span> &amp;
               embeddable cards, with{" "}
               <span className="border-b pb-[1px]">no code</span>, for your
               project.
             </h1>
-            <p className="text leading-8 mt-6 text-gray-500">
+            <p className="text leading-7 lg:leading-8 mt-6 text-gray-500">
               Dyno Js is a dynmaically typed javascripted generated code
               injection system system, that allows you to create jaw dropping
               dynamic content with no code. It is a simple, fast and easy to
               use, and it is free.
             </p>
             <div className="flex items-center mt-8">
-              <Link href="/main/SignIn">
+              <Link href="/authentication/SignIn">
                 <a className="px-10 block w-fit bg-green-500 hover:bg-green-600 py-3 text-white rounded-full transition-all">
                   Sign In
                 </a>
@@ -69,18 +44,18 @@ export default function Home() {
           </div>
           <img
             src="./screenshots/dynoCard.png"
-            className="h-[500px] ml-6"
+            className="w-full lg:w-auto lg:h-[500px] ml-0 mt-12 lg:mt-0 lg:ml-6"
             alt=""
           />
         </div>
-        <hr className="my-28" />
-        <div className="gap-8 grid grid-cols-2">
-          <div className="w-full bg-gradient-to-tr border flex flex-col p-8 mb-16 rounded-xl">
+        <hr className="my-16 lg:my-28" />
+        <div className="gap-8 grid grid-cols-1 lg:grid-cols-2">
+          <div className="w-full border my-3 lg:my-0 flex flex-col p-4 lg:p-8 rounded-xl">
             <div className="flex items-center">
               <BsIcons.BsStars className="text-green-500 text-2xl" />
               <span className="text-black ml-2 text-xs">Featured</span>
             </div>
-            <h1 className="text-3xl font-bold mt-4 leading-[1.3]">
+            <h1 className="text-2xl lg:text-3xl font-bold mt-4 leading-[1.3]">
               Our response towards the war in Ukraine.
             </h1>
             <p className="mt-3 mb-6 text-gray-500 text-sm leading-6">
@@ -96,12 +71,12 @@ export default function Home() {
               </div>
             </div>
           </div>
-          <div className="w-full bg-gradient-to-tr border flex flex-col p-8 mb-16 rounded-xl">
+          <div className="w-full border my-3 lg:my-0 flex flex-col p-4 lg:p-8 rounded-xl">
             <div className="flex items-center">
               <BsIcons.BsStars className="text-green-500 text-2xl" />
               <span className="text-black ml-2 text-xs">Featured</span>
             </div>
-            <h1 className="text-3xl font-bold mt-4 leading-[1.3]">
+            <h1 className="text-2xl lg:text-3xl font-bold mt-4 leading-[1.3]">
               Save green! Save life!
             </h1>
             <p className="mt-3 mb-6 text-gray-500 text-sm leading-6">
@@ -121,12 +96,14 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="mt-10 bg-gray-50 p-8">
-        <ul className="flex justify-center">
-          <li className="text-sm text-gray-500 mx-3">Home</li>
-          <li className="text-sm text-gray-500 mx-3">Blogs</li>
-          <li className="text-sm text-gray-500 mx-3">Partners</li>
-          <li className="text-sm text-gray-500 mx-3">Support Ukraine</li>
+      <div className="mt-10 lg:mt-24 bg-gray-50 p-8">
+        <ul className="flex justify-center overflow-x-auto whitespace-nowrap">
+          <li className="text-sm text-gray-500 mx-2 lg:mx-3">Home</li>
+          <li className="text-sm text-gray-500 mx-2 lg:mx-3">Blogs</li>
+          <li className="text-sm text-gray-500 mx-2 lg:mx-3">Partners</li>
+          <li className="text-sm text-gray-500 mx-2 lg:mx-3">
+            Support Ukraine
+          </li>
         </ul>
       </div>
     </div>
