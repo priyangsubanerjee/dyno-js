@@ -1,7 +1,8 @@
 class User {
-  constructor(email, id, name, avatar) {
+  constructor(email, id, token, name, avatar) {
     this.name = name;
     this.email = email;
+    this.token = token;
     this.id = id;
     this.avatar = avatar;
   }
@@ -30,6 +31,10 @@ class User {
     return this.avatar;
   }
 
+  getToken() {
+    return this.token;
+  }
+
   save() {
     localStorage.setItem("user", JSON.stringify(this));
   }
@@ -42,7 +47,4 @@ function getCurrentUser() {
   return user;
 }
 
-module.exports = {
-  User,
-  getCurrentUser,
-};
+export { User, getCurrentUser };

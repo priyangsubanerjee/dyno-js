@@ -5,14 +5,18 @@ import logo from "../../public/icons/logo.png";
 import Image from "next/image";
 import { getSalutation } from "../../helpers/dateTime";
 import { useRouter } from "next/router";
+import { checkIfLoggedIn } from "../../controllers/account";
 function Dashboard() {
   const router = useRouter();
   const [filter, setFilter] = useState("All");
   const [user, setUser] = useState(null);
-  useEffect(() => {
-    const currentUser = getCurrentUser();
-    if (currentUser) {
-      setUser(currentUser);
+  useEffect(async () => {
+    const response = await checkIfLoggedIn();
+    if (response == true) {
+      const user = getCurrentUser();
+      setUser(user);
+    } else {
+      router.push("/main/SignIn");
     }
   }, []);
 

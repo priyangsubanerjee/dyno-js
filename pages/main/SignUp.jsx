@@ -1,8 +1,12 @@
 import Link from "next/link";
 import React from "react";
 import { useState, useEffect } from "react";
-import createAccount from "../../controllers/account";
-import { User, getCurrentUser } from "../../user/User";
+import {
+  createAccount,
+  loginAccount,
+  checkIfLoggedIn,
+} from "../../controllers/account";
+import { User } from "../../user/User";
 import { useRouter } from "next/router";
 
 function SignUp() {
@@ -17,17 +21,11 @@ function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      console.log("trying..");
       const res = await createAccount(user.email, user.password);
-      const n_user = new User(
-        res.createAccount.email,
-        res.createAccount.id,
-        res.createAccount.name,
-        res.createAccount.avatar
-      );
-      n_user.save();
-      alert("Account created successfully");
-      router.push("/dashboard");
+      res == true ? router.push("/dashboard") : null;
     } catch (error) {
+      console.log(error);
       const error_msg = error.message.split(":")[0];
       if (error_msg === `value is not unique for the field "email"`) {
         alert("User already exists");
@@ -35,11 +33,9 @@ function SignUp() {
     }
   };
 
-  useEffect(() => {
-    const user = getCurrentUser();
-    if (user) {
-      router.push("/dashboard");
-    }
+  useEffect(async () => {
+    const response = await checkIfLoggedIn();
+    response == true ? router.push("/dashboard") : null;
   }, []);
 
   return (

@@ -1,8 +1,9 @@
 import Link from "next/link";
 import React from "react";
 import { useState, useEffect } from "react";
-import { loginAccount } from "../../controllers/account";
+import { loginAccount, checkIfLoggedIn } from "../../controllers/account";
 import { useRouter } from "next/router";
+import { User } from "../../user/User";
 
 function SIgnIn() {
   const router = useRouter();
@@ -14,14 +15,17 @@ function SIgnIn() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await loginAccount(user.email, user.password);
-      if (response.accounts) {
-        router.push("/dashboard");
-      }
+      const res = await loginAccount(user.email, user.password);
+      res == true ? router.push("/dashboard") : null;
     } catch (error) {
       console.log(error);
     }
   };
+
+  useEffect(async () => {
+    const response = await checkIfLoggedIn();
+    response == true ? router.push("/dashboard") : null;
+  }, []);
 
   return (
     <div className="px-6 flex flex-col justify-center items-center pt-[10%]">
