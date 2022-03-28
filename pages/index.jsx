@@ -19,7 +19,7 @@ export default function Home() {
       <div className="px-4 lg:px-48 mt-8 lg:mt-20">
         <div className="flex flex-col lg:flex-row items-center justify-center">
           <div className="mr-0 lg:mr-6">
-            <h1 className="text-3xl lg:text-4xl font-bold leading-[1.4] text-gray-800">
+            <h1 className="text-3xl lg:text-4xl font-bold leading-[1.4] lg:leading-[1.4] text-gray-800">
               Create <span className="text-green-500">responsive</span> &amp;
               embeddable cards, with{" "}
               <span className="border-b pb-[1px]">no code</span>, for your
