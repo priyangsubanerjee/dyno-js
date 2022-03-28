@@ -18,10 +18,18 @@ function SignUp() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const response = await createAccount(u_user.email, u_user.password);
-    response == true
-      ? alert("Account created") & router.push("/dashboard") & setLoading(false)
-      : alert("Account not created") & setLoading(false);
+
+    if (u_user.email.length > 0 && u_user.password.length > 0) {
+      const response = await createAccount(u_user.email, u_user.password);
+      response == true
+        ? alert("Account created") &
+          router.push("/dashboard") &
+          setLoading(false)
+        : alert("Account not created") & setLoading(false);
+    } else {
+      alert("Please fill all fields");
+      setLoading(false);
+    }
   };
 
   useEffect(async () => {

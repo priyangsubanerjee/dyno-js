@@ -25,10 +25,15 @@ function SIgnIn() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const response = await loginUser(user.email, user.password);
-    response == true
-      ? alert("Logged in") & router.push("/dashboard") & setLoading(false)
-      : alert("Logged in failed") & setLoading(false);
+    if (user.email.length > 0 && user.password.length > 0) {
+      const response = await loginUser(user.email, user.password);
+      response == true
+        ? alert("Logged in") & router.push("/dashboard") & setLoading(false)
+        : alert("Logged in failed") & setLoading(false);
+    } else {
+      alert("Please fill all fields");
+      setLoading(false);
+    }
   };
   return (
     <div className="px-4 flex flex-col justify-center items-center pt-[10%]">
