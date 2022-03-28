@@ -13,6 +13,27 @@ const generateToken = () => {
   return token;
 };
 
+const updateToken = async (id) => {
+  const query = `mutation {
+  upsertAccount(upsert: {create: {}, update: {token: "${generateToken()}"}}, where: {id: "${id}" }) {
+    id
+    token
+    name
+    email
+    avatar
+
+  }
+}
+
+`;
+
+  try {
+    const response = await GraphClient.request(query);
+    const res = await publishAccount(response.upsertAccount.id);
+    return res;
+  } catch (error) {}
+};
+
 const publishAccount = async (id) => {
   const query = gql`
     mutation {
@@ -45,7 +66,6 @@ const createAccount = async (a_email, a_password) => {
   try {
     const res = await GraphClient.request(query);
     const response = await publishAccount(res.createAccount.id);
-    console.log(response);
     const n_user = new User(
       response.publishAccount.email,
       response.publishAccount.id,
@@ -56,7 +76,6 @@ const createAccount = async (a_email, a_password) => {
     n_user.save();
     return true;
   } catch (error) {
-    console.log(error);
     return false;
   }
 };
@@ -77,15 +96,15 @@ const loginAccount = async (a_email, a_password) => {
     `;
 
   try {
-    const response = await GraphClient.request(query);
-
-    if (response.accounts[0]) {
+    const res = await GraphClient.request(query);
+    const response = await updateToken(res.accounts[0].id);
+    if (response.publishAccount.token) {
       const n_user = new User(
-        response.accounts[0].email,
-        response.accounts[0].id,
-        response.accounts[0].token,
-        response.accounts[0].name,
-        response.accounts[0].avatar
+        response.publishAccount.email,
+        response.publishAccount.id,
+        response.publishAccount.token,
+        response.publishAccount.name,
+        response.publishAccount.avatar
       );
       n_user.save();
       return true;
