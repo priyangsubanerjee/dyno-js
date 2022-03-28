@@ -49,7 +49,7 @@ function getTemplate(dyno, theme) {
     modal.style.width = '300px';
     modal.style.backgroundColor = 'white';
     modal.style.fontFamily = '"Open Sans", sans-serif';
-    modal.style.borderRadius = '7px';
+    modal.style.borderRadius = '5px';
     modal.style.overflow = 'auto';
     modal.style.transition = 'all 0.5s ease-in-out';
     modal.style.boxShadow = '0 0 20px 10px rgba(0, 0, 0, 0.1)';
@@ -249,7 +249,7 @@ function getTemplate(dyno, theme) {
     modal.style.width = '300px';
     modal.style.backgroundColor = '#1f1f1f';
     modal.style.fontFamily = '"Open Sans", sans-serif';
-    modal.style.borderRadius = '10px';
+    modal.style.borderRadius = '5px';
     modal.style.overflow = 'auto';
     modal.style.transition = 'all 0.5s ease-in-out';
     modal.style.boxShadow = '0 0 20px 10px rgba(0, 0, 0, 0.1)';
