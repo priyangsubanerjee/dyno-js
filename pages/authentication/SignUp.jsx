@@ -26,7 +26,7 @@ function SignUp() {
   }, []);
 
   return (
-    <div className="px-6 flex flex-col justify-center items-center pt-[10%]">
+    <div className="px-4 flex flex-col justify-center items-center pt-[10%]">
       <div className="bg-white w-full lg:w-[500px] rounded-lg p-6 border">
         <div className="flex flex-col">
           <img src="../icons/logo.png" className="h-8 w-8" alt="" />
