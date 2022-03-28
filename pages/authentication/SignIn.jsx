@@ -102,7 +102,7 @@ function SIgnIn() {
               </button>
             </div>
           </form>
-          <Link href={`/main/ForgotPassword`}>
+          <Link href={`/authentication/ForgotPassword`}>
             <a className="text-gray-500 mt-6 text-sm">Forgot Password ?</a>
           </Link>
         </div>
