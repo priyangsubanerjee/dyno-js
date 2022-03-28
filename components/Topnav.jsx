@@ -8,7 +8,7 @@ import * as FaIcons from "react-icons/fa";
 function Topnav() {
   return (
     <div>
-      <div className=":flex items-center px-4 lg:px-8 py-4 border-b">
+      <div className="flex items-center px-4 lg:px-8 py-4 border-b">
         <div className="flex items-center">
           <div className="w-10 h-10 relative">
             <Image
