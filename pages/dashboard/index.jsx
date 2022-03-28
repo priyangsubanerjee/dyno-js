@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { matchToken } from "../../contollers/account";
 import { useRouter } from "next/router";
-function index() {
+function Dashboard() {
   const router = useRouter();
   useEffect(async () => {
     const loggedIn = await matchToken();
@@ -17,4 +17,4 @@ function index() {
   );
 }
 
-export default index;
+export default Dashboard;
