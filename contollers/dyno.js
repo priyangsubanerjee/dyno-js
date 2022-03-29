@@ -14,6 +14,7 @@ async function getDynos() {
       dynos(where: { email: "${user.getEmail()}" }) {
         id
         icon
+        endpoint
         coverImage
         heading
         description

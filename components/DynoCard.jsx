@@ -1,8 +1,11 @@
 import React from "react";
 import * as AiIcons from "react-icons/ai";
 import { deleteDyno } from "../contollers/dyno";
+import { useState } from "react";
+import Details from "./Details";
 
 function DynoCard({ dyno, myDynos, setMyDynos }) {
+  const [details, setDetails] = useState(false);
   const delete_this = async () => {
     if (confirm("Are you sure you want to delete this dyno?")) {
       console.log("delete");
@@ -35,11 +38,15 @@ function DynoCard({ dyno, myDynos, setMyDynos }) {
             className="text-xl text-gray-500 hover:text-green-500 cursor-pointer"
           />
           <AiIcons.AiOutlineEdit className="text-xl ml-6 text-gray-500 hover:text-green-500 cursor-pointer" />
-          <button className="py-2 p-4 ml-auto bg-green-500 hover:bg-green-600 transition-all rounded-full text-white text-sm">
+          <button
+            onClick={() => setDetails(true)}
+            className="py-2 p-4 ml-auto bg-green-500 hover:bg-green-600 transition-all rounded-full text-white text-sm"
+          >
             View details
           </button>
         </div>
       </div>
+      <Details dyno={dyno} setDetails={setDetails} details={details} />
     </div>
   );
 }
