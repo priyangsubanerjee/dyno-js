@@ -3,11 +3,15 @@ import Link from "next/link";
 import * as BsIcons from "react-icons/bs";
 import * as FaIcons from "react-icons/fa";
 import Topnav from "../components/Topnav";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { encrypt, decrypt } from "../crypto";
+import Toast from "../alerts/Toast";
 
 export default function Home() {
-  useEffect(() => {}, []);
+  const [toast, setToast] = useState({
+    show: false,
+    message: "",
+  });
 
   return (
     <div>
@@ -106,6 +110,7 @@ export default function Home() {
           </li>
         </ul>
       </div>
+      <Toast setToast={setToast} toast={toast} />
     </div>
   );
 }

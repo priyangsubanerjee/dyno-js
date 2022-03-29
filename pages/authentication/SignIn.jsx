@@ -6,9 +6,14 @@ import { useRouter } from "next/router";
 import { createAccount, matchToken, loginUser } from "../../contollers/account";
 import { getCurrentUser } from "../../models/User";
 import * as AiIcons from "react-icons/ai";
+import Toast from "../../alerts/Toast";
 
 function SIgnIn() {
   const router = useRouter();
+  const [toast, setToast] = useState({
+    show: false,
+    message: "",
+  });
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState({
     email: "",
@@ -28,8 +33,16 @@ function SIgnIn() {
     if (user.email.length > 0 && user.password.length > 0) {
       const response = await loginUser(user.email, user.password);
       response == true
-        ? alert("Logged in") & router.push("/dashboard") & setLoading(false)
-        : alert("Logged in failed") & setLoading(false);
+        ? setToast({
+            show: true,
+            message: "Login Successful",
+          }) &
+          router.push("/dashboard") &
+          setLoading(false)
+        : setToast({
+            show: true,
+            message: "Login failed",
+          }) & setLoading(false);
     } else {
       alert("Please fill all fields");
       setLoading(false);
@@ -116,6 +129,7 @@ function SIgnIn() {
         </ul>
       </div>
       <div className="fixed top-0 left-0 w-full h-1/2 bg-gray-100 border-b border-gray-200 -z-10"></div>
+      <Toast setToast={setToast} toast={toast} />
     </div>
   );
 }
