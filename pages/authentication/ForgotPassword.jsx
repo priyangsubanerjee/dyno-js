@@ -15,7 +15,7 @@ function ForgotPassword() {
     response.success
       ? setLoading(false) &
         alert("Email sent") &
-        router.push("../authentication/SignIn")
+        router.push("/authentication/SignIn")
       : setLoading(false) & alert("Email not sent");
     setLoading(false);
   };

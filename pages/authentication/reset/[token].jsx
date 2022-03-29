@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import * as AiIcons from "react-icons/ai";
 import { findUserByToken, updatePassword } from "../../../contollers/account";
 
@@ -14,6 +15,7 @@ export async function getServerSideProps(context) {
 }
 
 function Reset({ account }) {
+  const router = useRouter();
   const [user, setUser] = useState({
     id: account ? account.id : "",
     password: "",
@@ -29,7 +31,9 @@ function Reset({ account }) {
     }
     const response = await updatePassword(user.id, user.password);
     response == true
-      ? setLoading(false) & alert("Password updated")
+      ? setLoading(false) &
+        alert("Password updated") &
+        router.push("/authentication/SignIn")
       : setLoading(false) & alert("Password not updated");
     setLoading(false);
   };
