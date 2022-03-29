@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import * as AiIcons from "react-icons/ai";
 import { findUserByToken, updatePassword } from "../../../contollers/account";
+import Link from "next/link";
 
 export async function getServerSideProps(context) {
   const token = context.query.token;
@@ -47,12 +48,11 @@ function Reset({ account }) {
           </h1>
           <p className="text-gray-500 text-sm mt-2">
             Please enter the new password and confirm it.{" "}
-            <a
-              href="/authentication/SignIn"
-              className="text-green-500 hover:text-green-600 font-medium"
-            >
-              Sign in
-            </a>
+            <Link href={`/authentication/SignIn`}>
+              <a className="text-green-500 hover:text-green-600 font-medium">
+                Sign in
+              </a>
+            </Link>
           </p>
           <hr className="mt-4" />
         </div>
