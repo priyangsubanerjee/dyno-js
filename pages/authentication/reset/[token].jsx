@@ -48,7 +48,7 @@ function Reset({ account }) {
           <p className="text-gray-500 text-sm mt-2">
             Please enter the new password and confirm it.{" "}
             <a
-              href="./SignIn"
+              href="/authentication/SignIn"
               className="text-green-500 hover:text-green-600 font-medium"
             >
               Sign in
