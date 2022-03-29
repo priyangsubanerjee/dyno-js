@@ -107,7 +107,7 @@ function Dashboard() {
                 onClick={() => setDynoMode("all")}
                 className="text-2xl font-bold text-gray-700 border-b w-fit px-3 pb-2 cursor-pointer"
               >
-                Your's
+                Your&apos;s
               </li>
               <li
                 style={{ opacity: dynoMode == "featured" ? "1" : "0.3" }}
