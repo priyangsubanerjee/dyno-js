@@ -1,35 +1,48 @@
-import { route } from "next/dist/server/router";
 import React from "react";
-import { useState } from "react";
-import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 import * as AiIcons from "react-icons/ai";
-import { sendPasswordResetEmail } from "../../contollers/account";
-function ForgotPassword() {
-  const router = useRouter();
-  const [email, setEmail] = useState("");
+import { findUserByToken, updatePassword } from "../../../contollers/account";
+
+export async function getServerSideProps(context) {
+  const token = context.query.token;
+  const account = await findUserByToken(token);
+  return {
+    props: {
+      account,
+    },
+  };
+}
+
+function Reset({ account }) {
+  const [user, setUser] = useState({
+    id: account ? account.id : "",
+    password: "",
+    confirmPassword: "",
+  });
   const [loading, setLoading] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const response = await sendPasswordResetEmail(email);
-    response.success
-      ? setLoading(false) &
-        alert("Email sent") &
-        router.push("../authentication/SignIn")
-      : setLoading(false) & alert("Email not sent");
+    if (user.password !== user.confirmPassword) {
+      setLoading(false);
+      return alert("Passwords do not match");
+    }
+    const response = await updatePassword(user.id, user.password);
+    response == true
+      ? setLoading(false) & alert("Password updated")
+      : setLoading(false) & alert("Password not updated");
     setLoading(false);
   };
-
   return (
-    <div className="px-4 flex flex-col justify-center items-center py-[10%]">
+    <div className="px-4 flex flex-col justify-center items-center pt-[10%]">
       <div className="bg-white w-full lg:w-[500px] rounded-lg p-6 border">
         <div className="flex flex-col">
-          <img src="../icons/logo.png" className="h-8 w-8" alt="" />
+          <img src="../../icons/logo.png" className="h-8 w-8" alt="" />
           <h1 className="text-xl lg:text-2xl font-semibold text-gray-700 mt-4">
-            Forgot password ?
+            Set new password
           </h1>
           <p className="text-gray-500 text-sm mt-2">
-            Dont&apos;t we will help you get back into your account.{" "}
+            Please enter the new password and confirm it.{" "}
             <a
               href="./SignIn"
               className="text-green-500 hover:text-green-600 font-medium"
@@ -46,20 +59,33 @@ function ForgotPassword() {
           >
             <div className="flex flex-col">
               <label className="text-gray-700 text-sm font-semibold">
-                Email
+                New password
               </label>
               <input
-                type="email"
-                placeholder="Enter registered email"
-                onChange={(e) => setEmail(e.target.value)}
-                value={email}
+                type="password"
+                placeholder={`New password for ${account ? account.email : ""}`}
+                onChange={(e) => setUser({ ...user, password: e.target.value })}
+                value={user.password}
                 className="w-full py-2 px-3 mt-2 text-sm border border-gray-200 rounded"
               />
-              <small className="mt-3 text-gray-500">
-                You will receive a link to reset your password via email.
-              </small>
             </div>
-            <div className="flex flex-col mt-3">
+            <div className="flex flex-col mt-6">
+              <label className="text-gray-700 text-sm font-semibold">
+                Confirm password
+              </label>
+              <input
+                type="password"
+                placeholder={`Confirm password for ${
+                  account ? account.email : ""
+                }`}
+                onChange={(e) =>
+                  setUser({ ...user, confirmPassword: e.target.value })
+                }
+                value={user.confirmPassword}
+                className="w-full py-2 px-3 mt-2 text-sm border border-gray-200 rounded"
+              />
+            </div>
+            <div className="flex flex-col mt-0">
               <button
                 type="submit"
                 id=""
@@ -99,4 +125,4 @@ function ForgotPassword() {
   );
 }
 
-export default ForgotPassword;
+export default Reset;

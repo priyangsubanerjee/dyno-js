@@ -129,12 +129,91 @@ const logOut = async () => {
   }
 };
 
-const send2FA = async (email) => {
-  console.log(email);
-  const response = await axios.post("/api/main/mail", {
-    email: email,
-  });
-  return response;
+const findUserByToken = async (token) => {
+  const query = gql`
+    query {
+        accounts(where: { token: "${token}" }) {
+            id
+            email
+            token
+        }
+    }`;
+
+  try {
+    const response_1 = await client.request(query);
+    if (response_1.accounts.length == 1) {
+      return response_1.accounts[0];
+    }
+    return null;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
-export { createAccount, matchToken, logOut, loginUser, send2FA };
+const updatePassword = async (id, password) => {
+  const query = gql`
+        mutation {
+        updateAccount(where: { id: "${id}" }, data: { password: "${password}" }) {
+            id
+            email
+            token
+        }
+        }
+    `;
+
+  try {
+    const response_1 = await client.request(query);
+    const response_2 = await publishAccount(response_1.updateAccount.id);
+    const n_user = new User(
+      response_2.publishAccount.id,
+      response_2.publishAccount.email,
+      response_2.publishAccount.token
+    );
+    const saved = await saveCurrentUser(n_user);
+    return saved;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const findUserByEmail = async (email) => {
+  const query = gql`
+    query {
+        accounts(where: { email: "${email}" }) {
+            id
+            email
+            token
+        }
+    }`;
+
+  try {
+    const response_1 = await client.request(query);
+    if (response_1.accounts.length == 1) {
+      return response_1.accounts[0];
+    }
+    return null;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const sendPasswordResetEmail = async (email) => {
+  const user = await findUserByEmail(email);
+  if (user) {
+    const response = await axios.post("/api/main/mail", {
+      email: email,
+      link: `${process.env.NEXT_PUBLIC_FRONTEND_URL}/authentication/reset/${user.token}`,
+    });
+    return response.data;
+  }
+};
+
+export {
+  createAccount,
+  matchToken,
+  logOut,
+  loginUser,
+  findUserByToken,
+  updatePassword,
+  sendPasswordResetEmail,
+};

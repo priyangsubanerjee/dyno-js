@@ -5,8 +5,8 @@ export default async function (req, res) {
   switch (method) {
     case "POST":
       const email = req.body.email;
+      const link = req.body.link;
       console.log(req.body);
-      const fourDigitCode = Math.floor(1000 + Math.random() * 9000);
       const transporter = nodemailer.createTransport({
         port: 465,
         host: "smtp.gmail.com",
@@ -22,8 +22,8 @@ export default async function (req, res) {
         to: email.toLowerCase(),
         subject: "Contact Form Submission",
         html: `
-            <h2>2FA Code</h2>
-            <h1>${fourDigitCode}</h1>`,
+            <h2>Click the link below to reset your password</h2>
+            <a href=${link}>${link}</h1>`,
       };
 
       transporter.sendMail(mailData, function (err, info) {
@@ -35,7 +35,6 @@ export default async function (req, res) {
         } else {
           res.status(200).json({
             success: true,
-            code: fourDigitCode,
           });
         }
       });
